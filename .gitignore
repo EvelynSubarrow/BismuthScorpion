@@ -1,0 +1,16 @@
+build/
+out/
+gradle*
+
+*.iml
+*.iws
+*.swp
+
+*.sh
+
+~$*
+*~
+.*
+
+!/.gitignore
+
