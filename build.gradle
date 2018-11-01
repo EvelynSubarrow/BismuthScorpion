@@ -1,0 +1,15 @@
+plugins {
+    id 'java'
+}
+
+group 'moe.evelyn.malware.bismuthscorpion'
+version '1.0.0'
+
+jar {
+    manifest {
+        attributes(
+            "Version"     : version,
+            "Main-Class"  : 'moe.evelyn.malware.bismuthscorpion.Main'
+        )
+    }
+}
