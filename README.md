@@ -1,5 +1,5 @@
 # BismuthScorpion
-This is a proof of concept java virus, which infects jars contained in the same directory as itself, and incorporates.
+This is a proof of concept java virus, which infects jars contained in the same directory as itself, and incorporates
 a few novel java anti-analysis techniques. I conducted some research before starting on this, and I couldn't find any
 java self-replication examples at all. To my knowledge, this is the first of its kind.
 
@@ -16,19 +16,19 @@ ActualScorpion is streamed into into a .class file in the root of the jar, with 
 function, which obfuscates the class, and updates it with its new name.
 
 A random selection of classfiles present in the jar are streamed through `injectInvoke`, which inserts an invocation referencing
-ActualScorpion's run ()V, reverting the file if this method returns true, indicating a condition which would prevent classfile verification.
+ActualScorpion's `run`, reverting the file if this method returns true, indicating a condition which would prevent classfile verification.
 
 ### injectInvoke
-This inserts the relevant references to the obfuscated ActualScorpion's run ()V into the constant pool, and prepends an invokestatic instruction
+This inserts the relevant references to the obfuscated ActualScorpion's `run` into the constant pool, and prepends an invokestatic instruction
 referencing this into the Code attribute of the first method (invariably `<init>`, the constructor). This is surrounded by bytecode which
 frustrates some analysis tools if the classfile version if low enough that stack frame maps aren't mandatory on branches.
 
 The exceptions table in `Code` is offset to accomodate the new bytecode, as are the `LocalVariableTable` and `LocalVariableTypeTable` attributes,
 if present.
 
-If a stack frame map is present, this method returns true, to indicate to infectJar that the file needs to be reverted, as it'll fail verification
+If a stack frame map is present, this method returns true, to indicate to `infectJar` that the file needs to be reverted, as it'll fail verification
 without appropriate amendments to the stack frame map. Constructors aren't usually complex enough to require stack frame maps, so it's probably
-not worth adding this functionality.
+not worthwhile to add this functionality.
 
 ### transformSelf
 
@@ -76,8 +76,8 @@ the relative obscurity of some of these keywords
     - Class: final, synthetic
     - Field: volatile, transient, synthetic
     - Method: final, synchronized, bridge, strictfp, synthetic
-* Method and field names (aside from `run`, `<init>` and `<clinit>`) are set to 65280 randomly selected mostly unprintable characters ('\x01'..'-').
-Some tools won't escape these, but most will escape unprintable characters in the \uXXXX form, a potential sixfold increase in member name length,
+* Method and field names (aside from `run`, `<init>` and `<clinit>`) are set to 65280 randomly selected mostly unprintable characters (`'\x01'`..`'-'`).
+Some tools won't escape these, but most will escape unprintable characters in the `\uXXXX` form, a potential sixfold increase in member name length,
 every time the member is referenced.
 * Method `LocalVariableTable` and `LocalVariableTypeTable` attributes are changed to offer no useful hints as to the names of variables
 * Method `LineNumberTable` attributes, which correspond bytecode to line numbers for debugging and analysis, are made less accurate
