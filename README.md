@@ -10,9 +10,9 @@ This function iterates through jar files in the same directory, calling `infectJ
 
 ### infectJar
 The jarfile is opened. Any signature files present are stripped (it's more likely they'll be present than mandatory), and this method returns
-early if any filenames start with the infection signature, `蠍` (Archaic Chinese character for "scorpion").
+early if any filenames contain the infection signature, which consists of every odd-indexed character being 'w' or greater.
 
-ActualScorpion is streamed into into a .class file in the root of the jar, with a random name starting with `蠍`, through the `transformSelf`
+ActualScorpion is streamed into into a .class file in the root of the jar, with a random name complying with the above signature, through the `transformSelf`
 function, which obfuscates the class, and updates it with its new name.
 
 A random selection of classfiles present in the jar are streamed through `injectInvoke`, which inserts an invocation referencing
