@@ -3,6 +3,13 @@ This is a proof of concept java virus, which infects jars contained in the same 
 a few novel java anti-analysis techniques. I conducted some research before starting on this, and I couldn't find any
 java self-replication examples at all. To my knowledge, this is the first of its kind.
 
+## Countermeasures
+* Ensure your jarfiles are read only (easy)
+* Sign jarfiles, and [require signatures](https://blog.frankel.ch/jvm-security/2/) (hard)
+
+## Licence
+Creative Commons BY-NC-SA 4.0
+
 ## Mechanics overview
 ### run
 This is the entry point. This returns if it's already been run by one of the many invocations from constructors.
@@ -81,7 +88,3 @@ Some tools won't escape these, but most will escape unprintable characters in th
 every time the member is referenced.
 * Method `LocalVariableTable` and `LocalVariableTypeTable` attributes are changed to offer no useful hints as to the names of variables
 * Method `LineNumberTable` attributes, which correspond bytecode to line numbers for debugging and analysis, are made less accurate
-
-## Countermeasures
-* Ensure your jarfiles are read only (easy)
-* Sign jarfiles, and [require signatures](https://blog.frankel.ch/jvm-security/2/) (hard)
