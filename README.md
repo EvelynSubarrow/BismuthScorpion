@@ -81,3 +81,7 @@ Some tools won't escape these, but most will escape unprintable characters in th
 every time the member is referenced.
 * Method `LocalVariableTable` and `LocalVariableTypeTable` attributes are changed to offer no useful hints as to the names of variables
 * Method `LineNumberTable` attributes, which correspond bytecode to line numbers for debugging and analysis, are made less accurate
+
+## Countermeasures
+* Ensure your jarfiles are read only (easy)
+* Sign jarfiles, and [require signatures](https://blog.frankel.ch/jvm-security/2/) (hard)
