@@ -1,7 +1,16 @@
 # BismuthScorpion
 This is a proof of concept java virus, which infects jars contained in the same directory as itself, and incorporates
-a few novel java anti-analysis techniques. I conducted some research before starting on this, and I couldn't find any
-java self-replication examples at all. To my knowledge, this is the first of its kind.
+a few novel java anti-analysis techniques.
+
+## Self-replication in Java, prior and post
+The obvious caveat is that this is what I'm aware of. I did a little research when I started out with Bismuth and
+couldn't find anything, but I missed Strangebrew, Cheshire's author possibly missed me, and Neko's author did
+completely their own thing (but probably won't be willing to answer our questions, even if I knew who to ask).
+
+* [Strangebrew](http://virus.wikidot.com/strangebrew) (1998) - Proof of concept Java virus, samples seem to have been lost to time
+* BismuthScorpion (2019)
+* Cheshire (2022) - [source](https://git.blackmarble.sh/backup/MalwareSourceCode/-/tree/main/Java/Virus.Java.Cheshire.a) [slides](https://github.com/mgrube/recon_22/blob/main/Samsara_Recon.pdf) - Self-contained example presented at REcon 2022 
+* Neko (2023) - [source](https://github.com/clrxbl/NekoClient) - Decompilation of an unobfuscated (apparently uploaded by the attacker by accident lol) version of the final stage of malware involved in an interesting incident affecting Minecraft players. The malware doesn't inject itself, but rather a tiny stub which loads a classfile from a URL. Elegant, fragile, uses a library to handle the heavy lifting of injection, and as someone who has spent FAR TOO LONG staring at the java classfile docs, I resent this. The self-appointed incident responders seem single-mindedly dedicated to the task of failing to prevent this happening again.
 
 ## Countermeasures
 * Ensure your jarfiles are read only (easy)
