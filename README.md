@@ -4,13 +4,47 @@ a few novel java anti-analysis techniques.
 
 ## Self-replication in Java, prior and post
 The obvious caveat is that this is what I'm aware of. I did a little research when I started out with Bismuth and
-couldn't find anything, but I missed Strangebrew, Cheshire's author possibly missed me, and Neko's author did
+couldn't find anything, but I missed Strangebrew, Cheshire's author might well have missed Bismuth, and Neko's author did
 completely their own thing (but probably won't be willing to answer our questions, even if I knew who to ask).
 
-* [Strangebrew](http://virus.wikidot.com/strangebrew) (1998) - Proof of concept Java virus, samples seem to have been lost to time
-* BismuthScorpion (2019)
-* Cheshire (2022) - [source](https://git.blackmarble.sh/backup/MalwareSourceCode/-/tree/main/Java/Virus.Java.Cheshire.a) [slides](https://github.com/mgrube/recon_22/blob/main/Samsara_Recon.pdf) - Self-contained example presented at REcon 2022 
-* Neko (2023) - [source](https://github.com/clrxbl/NekoClient) - Decompilation of an unobfuscated (apparently uploaded by the attacker by accident lol) version of the final stage of malware involved in an interesting incident affecting Minecraft players. The malware doesn't inject itself, but rather a tiny stub which loads a classfile from a URL. Elegant, fragile, uses a library to handle the heavy lifting of injection, and as someone who has spent FAR TOO LONG staring at the java classfile docs, I resent this. The self-appointed incident responders seem single-mindedly dedicated to the task of failing to prevent this happening again.
+### Strangebrew (1998)
+* [article](http://virus.wikidot.com/strangebrew)
+
+A proof of concept by a university student, apparently quite buggy, but I think samples might well be lost to time.
+### BismuthScorpion (2019)
+(You are here)
+
+### Cheshire (2022)
+* [source](https://git.blackmarble.sh/backup/MalwareSourceCode/-/tree/main/Java/Virus.Java.Cheshire.a)
+* [slides](https://github.com/mgrube/recon_22/blob/main/Samsara_Recon.pdf) - Self-contained example presented at REcon 2022
+
+A self-contained example presented at Montreal's REcon in 2022, Cheshire is a masterpiece, it's some really impressive work,
+and it's what I'd refer people to if they needed an example of this phenomenon. I thoroughly empathise with the author's
+frustration with stack frame maps, and with spending hours staring at the classfile docs.
+
+### Nekoclient (2023)
+* [source](https://github.com/clrxbl/NekoClient)
+
+The final stage of malware involved in an interesting incident attacking Minecraft developers and players, making good use of the
+inadequate security around Minecraft mods. The final stage does a lot of interesting things (session stealing was used to good effect
+in the attack), but includes a replication mechanism, albeit not strictly straightforward self-replication, inserting a small stub into
+classfile constructors to load a classfile from a URL.
+
+The heavy classfile lifting is done by use of the ObjectWeb asm library, as someone who's spent many days living inside Java's
+classfile docs, I resent this.
+
+The author of this malware seemingly uploaded an unobfuscated version of it by accident (lol), and the source linked above is a
+decompilation of that. I'm unsure which specific decompiler was used on this repo (this is quite an important consideration when
+dealing with Java malware), though I know some of those analysing it are aware of CFR, the decompiler I favour for this work, and
+the code seems to demonstrate the replication part just fine in any case.
+
+I've written previously about the risk of something like this happening around Minecraft, and I suppose Bismuth is my "I told you so"
+card, but this isn't a very satisfying feeling. I asked for samples in the espernet channel, and was met with an "interesting"
+response from the self-appointed responders, I'm also aware of some of the discussions which have taken place between
+developers/maintainers of launchers and mod platforms; I'm not at all confident that security around Minecraft modding will be
+meaningfully improved.
+
+I look forward to adding more entries to this section!
 
 ## Countermeasures
 * Ensure your jarfiles are read only (easy)
