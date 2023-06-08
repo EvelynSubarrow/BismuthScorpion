@@ -16,7 +16,7 @@ A proof of concept by a university student, apparently quite buggy, but I think 
 
 ### Cheshire (2022)
 * [source](https://git.blackmarble.sh/backup/MalwareSourceCode/-/tree/main/Java/Virus.Java.Cheshire.a)
-* [slides](https://github.com/mgrube/recon_22/blob/main/Samsara_Recon.pdf) - Self-contained example presented at REcon 2022
+* [slides](https://github.com/mgrube/recon_22/blob/main/Samsara_Recon.pdf)
 
 A self-contained example presented at Montreal's REcon in 2022, Cheshire is a masterpiece, it's some really impressive work,
 and it's what I'd refer people to if they needed an example of this phenomenon. I thoroughly empathise with the author's
