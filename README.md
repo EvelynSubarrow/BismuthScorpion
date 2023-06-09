@@ -10,7 +10,7 @@ completely their own thing (but probably won't be willing to answer our question
 ### Strangebrew (1998)
 * Virus wikidot [article](http://virus.wikidot.com/strangebrew)
 * Virus Bulletin [Sept 1998](https://www.virusbulletin.com/uploads/pdf/magazine/1998/199809.pdf) (page 11)
-* [source](ftp://static.zedz.net/pub/security/info/textfiles/codebreakers-vx-zine/codebreakers-4/) (Codebreakers VX Zine, 4th release)
+* ftp://static.zedz.net/pub/security/info/textfiles/codebreakers-vx-zine/codebreakers-4/ (Codebreakers VX Zine, 4th release)
 
 Widely credited as the first Java virus, written by an Australian university student, and published in the 4th release of
 Codebreakers VX Zine, this came with a helpful tutorial introducing readers to the Java classfile format, as well as full source code.
@@ -20,7 +20,7 @@ The virus injects its own method into nearby .class files, apparently it was a l
 ### BeanHive (1999)
 * Virus Wikidot [article](http://virus.wikidot.com/beanhive)
 * Kaspersky [summary](https://threats.kaspersky.com/en/threat/Virus.Java.BeanHive/)
-* [source](ftp://static.zedz.net/pub/security/info/textfiles/codebreakers-vx-zine/codebreakers-5/) (Codebreakers VX Zine, 5th release)
+* ftp://static.zedz.net/pub/security/info/textfiles/codebreakers-vx-zine/codebreakers-5/ (Codebreakers VX Zine, 5th release)
 
 Comparable mechanism to the later Nekoclient/« Fractureiser », although more verbose, infection is with a stub which loads a classfile from
 a remote URL. Written by the same author as Strangebrew, though the tutorial is sadly not as detailed.
